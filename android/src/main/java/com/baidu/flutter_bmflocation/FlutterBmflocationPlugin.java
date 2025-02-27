@@ -14,7 +14,6 @@ import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler;
 import io.flutter.plugin.common.MethodChannel.Result;
-import io.flutter.plugin.common.PluginRegistry;
 
 /** FlutterBmflocationPlugin */
 public class FlutterBmflocationPlugin implements FlutterPlugin, MethodCallHandler {
@@ -50,17 +49,6 @@ public class FlutterBmflocationPlugin implements FlutterPlugin, MethodCallHandle
     geofenceChannel.setMethodCallHandler(this);
 
     MethodChannelManager.getInstance().putGeofenceChannel(geofenceChannel);
-  }
-
-   /* 旧版接口 */
-  public static void registerWith(PluginRegistry.Registrar registrar) {
-    if (null == registrar) {
-      return;
-    }
-    if (null == mContext) {
-      mContext = registrar.context();
-    }
-    initStaticMethodChannel(registrar.messenger());
   }
 
   private static void initStaticMethodChannel(BinaryMessenger binaryMessenger) {
